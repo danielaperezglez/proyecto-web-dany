@@ -1,0 +1,35 @@
+<?php
+// Asegurarse de que $voluntario es un objeto con los campos de la tabla
+if (!isset($voluntario) || !is_object($voluntario)) {
+    $voluntario = (object)[
+        'donador_id' => '',
+        'centro_id' => '',
+        'campana_id' => '',
+        'area_interes' => '',
+        'disponibilidad' => '',
+        'horario_preferido' => '',
+        'comentarios' => '',
+        'estatus' => 'activo'
+    ];
+}
+
+// Asegurarse de que donadores, centros y campanas son arrays
+$donadores = isset($donadores) && is_array($donadores) ? $donadores : [];
+$centros = isset($centros) && is_array($centros) ? $centros : [];
+$campanas = isset($campanas) && is_array($campanas) ? $campanas : [];
+?>
+
+<?= Form::open() ?>
+
+<div class="mb-3"><label>Donador:</label><?= Form::select("voluntario.donador_id", $donadores, $voluntario->donador_id ?? "", ["empty" => "Selecciona un donador"]) ?></div>
+<div class="mb-3"><label>Centro de Acopio:</label><?= Form::select("voluntario.centro_id", $centros, $voluntario->centro_id ?? "", ["empty" => "Selecciona un centro"]) ?></div>
+<div class="mb-3"><label>Campaña:</label><?= Form::select("voluntario.campana_id", $campanas, $voluntario->campana_id ?? "", ["empty" => "Selecciona una campaña"]) ?></div>
+<div class="mb-3"><label>Área de interés:</label><?= Form::text("voluntario.area_interes", $voluntario->area_interes ?? "") ?></div>
+<div class="mb-3"><label>Disponibilidad:</label><?= Form::text("voluntario.disponibilidad", $voluntario->disponibilidad ?? "") ?></div>
+<div class="mb-3"><label>Horario preferido:</label><?= Form::text("voluntario.horario_preferido", $voluntario->horario_preferido ?? "") ?></div>
+<div class="mb-3"><label>Comentarios:</label><?= Form::textarea("voluntario.comentarios", $voluntario->comentarios ?? "") ?></div>
+<div class="mb-3"><label>Estatus:</label><?= Form::select("voluntario.estatus", ["activo" => "Activo", "inactivo" => "Inactivo"], $voluntario->estatus ?? "activo") ?></div>
+
+<div class="mb-3"><button type="submit" style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">GUARDAR</button></div>
+
+<?= Form::close() ?>

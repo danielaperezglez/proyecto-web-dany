@@ -1,0 +1,51 @@
+<div class="container py-4" style="background-color:#F5F0E1; border-radius:12px;">
+
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            DONADORES REGISTRADOS
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            JUNTOS HACEMOS LA DIFERENCIA
+        </h2>
+    </div>
+
+    <p class="text-center text-muted mb-4">
+        Consulta los donadores y su información. ¡Inspírate para unirte a contribuir!
+    </p>
+
+    <!-- Tarjetas de donadores -->
+    <div class="row g-3">
+        <?php foreach ($donadores as $donador): ?>
+            <div class="col-md-6 col-lg-4">
+                <div class="card" style="border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="card-body">
+                        <!-- Nombre del donador centrado -->
+                        <h5 class="card-title text-center" style="color:#5A8F7B;">
+                            <?= htmlspecialchars($donador->nombre) ?>
+                        </h5>
+
+                        <p class="card-text">
+                            <strong>Teléfono:</strong> <?= htmlspecialchars($donador->telefono ?? '-') ?> <br>
+                            <strong>Email:</strong> <?= htmlspecialchars($donador->email ?? '-') ?> <br>
+                            <strong>Dirección:</strong> <?= htmlspecialchars($donador->direccion ?? '-') ?> <br>
+                            <strong>Tipo:</strong> <?= htmlspecialchars(ucfirst($donador->tipo)) ?> <br>
+                            <strong>Frecuencia de donación:</strong> <?= htmlspecialchars($donador->frecuencia_donacion ?? '-') ?> <br>
+                            <strong>Registrado:</strong> <?= date('d/m/Y', strtotime($donador->created_at)) ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between">
+                            <?= Html::link("/donadores/ver/{$donador->id}", "Ver detalle", ["class" => "btn btn-sm btn-success", "style"=>"background-color:#4B2E2E; border:none;"]) ?>
+                            <?= Html::link("/donadores/editar/{$donador->id}", "Editar", ["class" => "btn btn-sm btn-warning", "style"=>"background-color:#C79CA0; border:none;"]) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Botón Registrar abajo a la derecha -->
+    <div class="d-flex justify-content-end mt-4">
+        <?= Html::link("/donadores/registrar", "REGISTRAR NUEVO DONADOR", ["class"=>"btn btn-success", "style"=>"background-color:#7A9E7E; border:none;"]) ?>
+    </div>
+
+</div>

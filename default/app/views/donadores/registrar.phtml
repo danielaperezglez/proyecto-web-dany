@@ -1,0 +1,5 @@
+<div style="text-align:center;"><h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">REGISTRAR DONADOR</h1></div>
+
+<div style="color: red;"><?php View::content(); ?></div>
+
+<?= View::partial('donadores/_form', false, ['donador' => $donador ?? null, 'errors' => $errors ?? []]) ?>

@@ -1,0 +1,89 @@
+<div style="text-align:center;">
+    <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+        HISTORIA DE IMPACTO: <?= htmlspecialchars($historia->titulo) ?>
+    </h1>
+    <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+        SAN JUAN DEL RÍO
+    </h2>
+</div>
+
+<style>
+    .info-table {
+        width: 100%;
+        max-width: 700px;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-family: Arial, sans-serif;
+        margin: 1.5rem auto;
+    }
+
+    .info-table td {
+        padding: 12px 16px;
+        background-color: #f5f5f5;
+        border-radius: 6px;
+        vertical-align: top;
+    }
+
+    .info-table tr td:first-child {
+        font-weight: bold;
+        background-color: #e0e0e0;
+        width: 180px;
+    }
+
+    .info-table tr td:last-child {
+        background-color: #f9f9f9;
+    }
+
+    .info-table tr:hover td {
+        background-color: #f1e4e6;
+        transition: background-color 0.3s;
+    }
+</style>
+
+<table class="info-table">
+    <tbody>
+    <tr>
+        <td>Descripción</td>
+        <td><?= nl2br(htmlspecialchars($historia->descripcion)) ?></td>
+    </tr>
+    <tr>
+        <td>Estado</td>
+        <td><?= htmlspecialchars($historia->estado) ?></td>
+    </tr>
+    <tr>
+        <td>Campaña</td>
+        <td><?= htmlspecialchars($historia->campana->nombre ?? "Sin asignar") ?></td>
+    </tr>
+    <tr>
+        <td>Donador</td>
+        <td><?= htmlspecialchars($historia->donador->nombre ?? "Sin asignar") ?></td>
+    </tr>
+    <tr>
+        <td>Fecha</td>
+        <td><?= date('d/m/Y', strtotime($historia->fecha ?? $historia->created_at)) ?></td>
+    </tr>
+    <tr>
+        <td>Imagen</td>
+        <td>
+            <?php if (!empty($historia->imagen)): ?>
+                <img src="<?= $historia->getImagenUrl() ?>" alt="<?= htmlspecialchars($historia->titulo) ?>" style="max-width:250px; border-radius:8px; box-shadow:0 0 6px rgba(0,0,0,0.2);">
+            <?php else: ?>
+                <span style="font-style:italic; color:#5E3C2C;">Sin imagen</span>
+            <?php endif; ?>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- Botones alineados a la derecha -->
+<div class="mb-2 text-end" style="margin-top:1rem;">
+    <?= Html::link("historias_impacto/editar/{$historia->id}", "Editar", [
+        "class" => "btn",
+        "style" => "background-color:#4B2E2E; color:white; border:none; padding:0.5rem 1rem; border-radius:6px;"
+    ]) ?>
+    <?= Html::link("historias_impacto/index", "Inicio", [
+        "class" => "btn",
+        "style" => "background-color:#C79CA0; color:white; border:none; padding:0.5rem 1rem; border-radius:6px;"
+    ]) ?>
+</div>
+

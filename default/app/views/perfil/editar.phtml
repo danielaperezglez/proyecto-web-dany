@@ -1,0 +1,80 @@
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">✏️ Editar Mi Perfil</h5>
+                <a href="<?= PUBLIC_PATH ?>perfil" class="btn btn-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </a>
+            </div>
+            <div class="card-body">
+                <?= Form::open('perfil/editar') ?>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">📧 Email</label>
+                                <?= Form::email('usuario.email', ['class' => 'form-control', 'id' => 'email', 'value' => $usuario->email, 'required' => true]) ?>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">👤 Username</label>
+                                <?= Form::text('usuario.username', ['class' => 'form-control', 'id' => 'username', 'value' => $usuario->username, 'required' => true]) ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    <h6 class="text-muted mb-3">🔑 Cambiar Contraseña (opcional)</h6>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">🔒 Nueva Contraseña</label>
+                                <?= Form::password('usuario.password', ['class' => 'form-control', 'id' => 'password', 'placeholder' => 'Dejar vacío para mantener actual']) ?>
+                                <div class="form-text">Mínimo 6 caracteres</div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="password_confirm" class="form-label">🔒 Confirmar Contraseña</label>
+                                <?= Form::password('usuario.password_confirm', ['class' => 'form-control', 'id' => 'password_confirm', 'placeholder' => 'Confirmar nueva contraseña']) ?>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <a href="<?= PUBLIC_PATH ?>perfil" class="btn btn-secondary">
+                            <i class="fas fa-times"></i> Cancelar
+                        </a>
+                        <?= Form::submit('💾 Guardar Cambios', ['class' => 'btn btn-primary']) ?>
+                    </div>
+                <?= Form::close() ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const password = document.getElementById('password');
+    const passwordConfirm = document.getElementById('password_confirm');
+    
+    function validatePasswords() {
+        if (password.value && passwordConfirm.value) {
+            if (password.value !== passwordConfirm.value) {
+                passwordConfirm.setCustomValidity('Las contraseñas no coinciden');
+            } else {
+                passwordConfirm.setCustomValidity('');
+            }
+        } else {
+            passwordConfirm.setCustomValidity('');
+        }
+    }
+    
+    password.addEventListener('input', validatePasswords);
+    passwordConfirm.addEventListener('input', validatePasswords);
+});
+</script>

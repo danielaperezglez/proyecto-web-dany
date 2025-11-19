@@ -1,0 +1,44 @@
+<?= Form::open() ?>
+
+    <div class="mb-3">
+        <label>Donador:</label>
+        <?= Form::select("donacion.donador_id", $donadores, $donacion->donador_id ?? "") ?>
+    </div>
+
+    <div class="mb-3">
+        <label>Centro:</label>
+        <?= Form::select("donacion.centro_id", $centros, $donacion->centro_id ?? "") ?>
+    </div>
+
+    <div class="mb-3">
+        <label>Campaña:</label>
+        <?= Form::select("donacion.campana_id", $campanas, $donacion->campana_id ?? "") ?>
+    </div>
+
+    <div class="mb-3">
+        <label>Tipo de donación:</label>
+        <?= Form::select(
+            "donacion.tipo_donacion",
+            ["comida" => "Comida", "medicinas" => "Medicinas", "juguetes" => "Juguetes", "otro" => "Otro"],
+            $donacion->tipo_donacion ?? ""
+        ) ?>
+    </div>
+
+    <div class="mb-3">
+        <label>Cantidad:</label>
+        <?= Form::text("donacion.cantidad", $donacion->cantidad ?? "") ?>
+    </div>
+
+    <div class="mb-3">
+        <label>Descripción:</label>
+        <?= Form::textarea("donacion.descripcion", $donacion->descripcion ?? "") ?>
+    </div>
+
+    <div class="mb-3">
+        <button type="submit"
+                style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+            GUARDAR
+        </button>
+    </div>
+
+<?= Form::close() ?>

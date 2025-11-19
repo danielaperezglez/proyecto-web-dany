@@ -1,0 +1,7 @@
+<div style="text-align:center;"><h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">EDITAR MAPA</h1>
+    <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">SAN JUAN DEL RÍO</h2>
+</div>
+
+<div style="color: red;"><?php View::content(); ?></div>
+
+<?= View::partial('mapa/_form', false, ['centro' => $centro, 'errors' => $errors ?? []]) ?>

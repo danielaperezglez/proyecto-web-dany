@@ -1,0 +1,98 @@
+<div class="container py-4" style="background-color:#F5F0E1; border-radius:12px;">
+
+    <!-- Encabezado -->
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            VOLUNTARIADO LOCAL
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            ¡Suma tus manos y sé parte del cambio!
+        </h2>
+    </div>
+
+    <p class="text-center text-muted mb-4" style="font-size:1.1rem;">
+        Conoce a nuestros <strong>voluntarios</strong> que ayudan desde el corazón
+    </p>
+
+    <!-- Tabla de voluntarios -->
+    <div class="table-responsive" style="background-color:#FFF; border-radius:12px; padding:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <table id="tvoluntarios" class="table table-sm table-hover table-striped align-middle">
+            <thead style="background-color:#C79CA0; color:white;">
+            <tr>
+                <th>Acción</th>
+                <th>ID</th>
+                <th>Donador</th>
+                <th>Centro</th>
+                <th>Campaña</th>
+                <th>Área de Interés</th>
+                <th>Disponibilidad</th>
+                <th>Horario Preferido</th>
+                <th>Comentarios</th>
+                <th>Estatus</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php if(!empty($voluntarios) && is_array($voluntarios)): ?>
+                <?php foreach ($voluntarios as $voluntario): ?>
+                    <tr>
+                        <td>
+                            <?= Html::link("/voluntariado/ver/{$voluntario->id}", "Ver", ["class" => "btn btn-success btn-sm", "style" => "background-color:#7A9E7E; border:none;"]) ?>
+                            <?= Html::link("/voluntariado/editar/{$voluntario->id}", "Editar", ["class" => "btn btn-primary btn-sm", "style" => "background-color:#A67C52; border:none;"]) ?>
+                            <?= Html::link("/voluntariado/eliminar/{$voluntario->id}", "Eliminar", ["class" => "btn btn-danger btn-sm", "onclick"=>"return confirm('¿Deseas eliminar este voluntario?');", "style"=>"background-color:#D27D7D; border:none;"]) ?>
+                        </td>
+                        <td><?= $voluntario->id ?></td>
+                        <td><?= $voluntario->donador->nombre ?? "" ?></td>
+                        <td><?= $voluntario->centro->nombre ?? "" ?></td>
+                        <td><?= $voluntario->campana->nombre ?? "" ?></td>
+                        <td><?= htmlspecialchars($voluntario->area_interes) ?></td>
+                        <td><?= htmlspecialchars($voluntario->disponibilidad) ?></td>
+                        <td><?= htmlspecialchars($voluntario->horario_preferido) ?></td>
+                        <td><?= htmlspecialchars($voluntario->comentarios) ?></td>
+                        <td><?= ucfirst($voluntario->estatus) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Botón registrar -->
+    <div class="d-flex justify-content-end mt-4">
+        <?= Html::link("/voluntariado/registrar", "REGISTRAR NUEVO VOLUNTARIO", ["class"=>"btn btn-success", "style"=>"background-color:#7A9E7E; border:none; font-weight:bold;"]) ?>
+    </div>
+</div>
+
+<!-- Script de Tabulator -->
+<script>
+    var table = new Tabulator("#tvoluntarios", {
+        layout: "fitColumns",
+        pagination: "local",
+        paginationSize: 8,
+        movableColumns: true,
+        columns: [
+            {title:"Acción", field:"Acción", formatter:"html", widthGrow:1},
+            {title:"ID", field:"ID", sorter:"number"},
+            {title:"Donador", field:"Donador", sorter:"string", headerFilter:"input"},
+            {title:"Centro", field:"Centro", sorter:"string", headerFilter:"input"},
+            {title:"Campaña", field:"Campaña", sorter:"string", headerFilter:"input"},
+            {title:"Área de Interés", field:"Área de Interés", sorter:"string"},
+            {title:"Disponibilidad", field:"Disponibilidad", sorter:"string"},
+            {title:"Horario Preferido", field:"Horario Preferido", sorter:"string"},
+            {title:"Comentarios", field:"Comentarios", sorter:"string"},
+            {title:"Estatus", field:"Estatus", sorter:"string"},
+        ],
+    });
+
+    // Convertir tabla HTML existente a datos para Tabulator
+    var data = [];
+    document.querySelectorAll("#tvoluntarios tbody tr").forEach(function(row){
+        var rowData = {};
+        row.querySelectorAll("td").forEach(function(cell, index){
+            var field = table.getColumnDefinitions()[index].field;
+            rowData[field] = cell.innerHTML;
+        });
+        data.push(rowData);
+    });
+
+    table.setData(data);
+</script>

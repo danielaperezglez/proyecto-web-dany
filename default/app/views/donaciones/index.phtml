@@ -1,0 +1,52 @@
+<div class="container py-4" style="background-color:#F5F0E1; border-radius:12px;">
+
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            DONACIONES REALIZADAS
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            JUNTOS HACEMOS LA DIFERENCIA
+        </h2>
+    </div>
+
+    <p class="text-center text-muted mb-4">
+        Consulta las donaciones recientes y únete a contribuir con tu granito de esperanza.
+    </p>
+
+    <!-- Tarjetas de donaciones -->
+    <div class="row g-3">
+        <?php foreach ($donaciones as $donacion): ?>
+            <div class="col-md-6 col-lg-4">
+                <div class="card" style="border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="card-body">
+                        <!-- Información principal centrada -->
+                        <h5 class="card-title text-center" style="color:#5A8F7B;">
+                            <?= htmlspecialchars($donacion->tipo_donacion) ?> - <?= htmlspecialchars($donacion->cantidad) ?>
+                        </h5>
+
+                        <p class="card-text">
+                            <strong>Donador:</strong> <?= htmlspecialchars($donacion->donador->nombre ?? $donacion->donador_id) ?> <br>
+                            <strong>Centro:</strong> <?= htmlspecialchars($donacion->centro->nombre ?? '-') ?> <br>
+                            <strong>Campaña:</strong> <?= htmlspecialchars($donacion->campana->nombre ?? '-') ?> <br>
+                            <strong>Descripción:</strong> <?= htmlspecialchars($donacion->descripcion) ?> <br>
+                            <strong>Fecha:</strong> <?= $donacion->fecha ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between">
+                            <?= Html::link("/donaciones/ver/{$donacion->id}", "Ver detalle", ["class" => "btn btn-sm btn-success", "style"=>"background-color:#4B2E2E; border:none;"]) ?>
+                            <a href="/donaciones/registrar" class="btn btn-sm btn-warning" style="background-color:#C79CA0; border:none;">
+                                <i class="fas fa-heart"></i> Donar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Botón Registrar abajo a la derecha -->
+    <div class="d-flex justify-content-end mt-4">
+        <?= Html::link("/donaciones/registrar", "REGISTRAR NUEVA DONACIÓN", ["class"=>"btn btn-success", "style"=>"background-color:#7A9E7E; border:none;"]) ?>
+    </div>
+
+</div>

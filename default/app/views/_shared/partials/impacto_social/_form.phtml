@@ -1,0 +1,17 @@
+<?php
+// Generar array de donadores en formato id => nombre
+$donadoresArray = [];
+if (!empty($donadores)) {
+    foreach ($donadores as $d) {
+        $donadoresArray[$d->id] = $d->nombre;
+    }
+}
+?>
+
+<?= Form::open('impacto_social/registrar', 'post', ['enctype' => 'multipart/form-data']) ?>
+    <div class="mb-3"><label>Donador:</label><?= Form::select("impacto_social.donador_id", $donadoresArray, $impacto_social->donador_id ?? "") ?></div>
+    <div class="mb-3"><label>Tipo de Donación:</label><?= Form::select("impacto_social.tipo_donacion", ["comida" => "Comida", "medicinas" => "Medicinas", "juguetes" => "Juguetes", "otro" => "Otro"], $impacto_social->tipo_donacion ?? "") ?></div>
+    <div class="mb-3"><label>Cantidad Total:</label><?= Form::text("impacto_social.cantidad_total", $impacto_social->cantidad_total ?? "") ?></div>
+    <div class="mb-3"><label>Descripción:</label><?= Form::textarea("impacto_social.descripcion", $impacto_social->descripcion ?? "") ?></div>
+    <div class="mb-3"><button type="submit" style="background-color:#7A9E7E;color:#fff;border:none;padding:8px 16px;border-radius:4px;cursor:pointer;">GUARDAR</button></div>
+<?= Form::close() ?>

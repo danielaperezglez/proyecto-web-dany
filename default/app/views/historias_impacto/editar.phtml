@@ -1,0 +1,7 @@
+<div style="text-align:center;">
+    <h1>EDITAR HISTORIA DE IMPACTO</h1>
+</div>
+
+<div style="color:red;"><?php View::content(); ?></div>
+
+<?= View::partial('historias_impacto/_form', false, ['historia'   => $historia, 'campanas'   => $campanas ?? [], 'donadores'  => $donadores ?? [], 'errors'     => $errors ?? []]) ?>

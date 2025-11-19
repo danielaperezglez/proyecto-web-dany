@@ -1,0 +1,111 @@
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>👥 Gestión de Usuarios</h2>
+                <div>
+                    <a href="<?= PUBLIC_PATH ?>roles" class="btn btn-outline-secondary me-2">
+                        🏷️ Roles
+                    </a>
+                    <a href="<?= PUBLIC_PATH ?>usuarios/crear" class="btn btn-primary">
+                        ➕ Nuevo Usuario
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>👤 Usuario</th>
+                                    <th>📧 Email</th>
+                                    <th>🏷️ Rol</th>
+                                    <th>📊 Estado</th>
+                                    <th>⚙️ Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($usuarios as $usuario): ?>
+                                <tr>
+                                    <td><?= $usuario->id ?></td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="avatar bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                                <?= strtoupper(substr($usuario->username, 0, 2)) ?>
+                                            </div>
+                                            <strong><?= $usuario->username ?></strong>
+                                        </div>
+                                    </td>
+                                    <td><?= $usuario->email ?></td>
+                                    <td>
+                                        <?php if ($usuario->rol === 'admin'): ?>
+                                            <span class="badge bg-danger">👑 Admin</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-secondary">👤 Usuario</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <?php if ($usuario->activo): ?>
+                                            <span class="badge bg-success">✅ Activo</span>
+                                        <?php else: ?>
+                                            <span class="badge bg-warning">⚠️ Inactivo</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            <a href="<?= PUBLIC_PATH ?>usuarios/editar/<?= $usuario->id ?>" 
+                                               class="btn btn-sm btn-outline-primary" title="Editar">
+                                                ✏️
+                                            </a>
+                                            
+                                            <a href="<?= PUBLIC_PATH ?>usuarios/cambiar_password/<?= $usuario->id ?>" 
+                                               class="btn btn-sm btn-outline-warning" title="Cambiar Contraseña">
+                                                🔑
+                                            </a>
+                                            
+                                            <a href="<?= PUBLIC_PATH ?>usuarios/restablecer_password/<?= $usuario->id ?>" 
+                                               class="btn btn-sm btn-outline-info" title="Restablecer Contraseña"
+                                               onclick="return confirm('¿Restablecer contraseña?')">
+                                                🔄
+                                            </a>
+                                            
+                                            <a href="<?= PUBLIC_PATH ?>usuarios/toggle_estado/<?= $usuario->id ?>" 
+                                               class="btn btn-sm btn-outline-<?= $usuario->activo ? 'warning' : 'success' ?>" 
+                                               title="<?= $usuario->activo ? 'Desactivar' : 'Activar' ?>"
+                                               onclick="return confirm('¿Cambiar estado del usuario?')">
+                                                <?= $usuario->activo ? '🚫' : '✅' ?>
+                                            </a>
+                                            
+                                            <?php if ($usuario->id != Auth::id()): ?>
+                                            <a href="<?= PUBLIC_PATH ?>usuarios/eliminar/<?= $usuario->id ?>" 
+                                               class="btn btn-sm btn-outline-danger" title="Eliminar"
+                                               onclick="return confirm('¿Eliminar usuario permanentemente?')">
+                                                🗑️
+                                            </a>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.avatar {
+    font-size: 14px;
+    font-weight: bold;
+}
+</style>

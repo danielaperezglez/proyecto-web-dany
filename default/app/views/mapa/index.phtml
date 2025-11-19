@@ -1,0 +1,53 @@
+<div class="container py-4" style="background-color:#F5F0E1; border-radius:12px;">
+
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            MAPA CENTROS DE ACOPIO PARA PERROS
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            SAN JUAN DEL RÍO
+        </h2>
+    </div>
+
+
+    <p class="text-center text-muted mb-4">Encuentra centros de acopio y refugios donde puedes ayudar a nuestros perritos</p>
+
+    <!-- Mapa embebido -->
+    <div style="border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); margin-bottom:20px;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d59833.100245451285!2d-99.9974155241802!3d20.400662770434067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCENTROS%20DE%20ACOPIO%20PARA%20PERROS%20EN%20SAN%20JUAN%20DEL%20RIO!5e0!3m2!1ses!2smx!4v1761527788251!5m2!1ses!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <!-- Tarjetas de centros tradicionales -->
+    <div class="row g-3">
+        <?php foreach ($centros as $centro): ?>
+            <div class="col-md-6 col-lg-4">
+                <div class="card" style="border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                    <div class="card-body">
+                        <!-- Nombre del centro centrado -->
+                        <h5 class="card-title text-center" style="color:#5A8F7B;"> <?= strtoupper($centro->nombre) ?></h5>
+
+                        <p class="card-text">
+                            <i class="fas fa-map-marker-alt"></i> <?= $centro->direccion ?> <br>
+                            <i class="fas fa-box"></i> <?= $centro->necesidades ?> <br>
+                            <i class="fas fa-phone"></i> <?= $centro->telefono ?> <br>
+                            <i class="fas fa-envelope"></i> <?= $centro->email ?>
+                        </p>
+
+                        <div class="d-flex justify-content-between">
+                            <?= Html::link("/mapa/ver/{$centro->id}", "Ver detalle", ["class" => "btn btn-sm btn-success", "style"=>"background-color:#4B2E2E; border:none;"]) ?>
+                            <a href="https://www.google.com/maps/search/?api=1&query=<?= urlencode($centro->direccion) ?>" target="_blank" class="btn btn-sm btn-warning" style="background-color:#C79CA0; border:none;">
+                                <i class="fas fa-route"></i> Ruta
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+
+    <!-- Botón Registrar abajo a la derecha -->
+    <div class="d-flex justify-content-end mt-4">
+        <?= Html::link("/mapa/registrar", "REGISTAR NUEVO CENTRO", ["class"=>"btn btn-success", "style"=>"background-color:#7A9E7E; border:none;"]) ?>
+    </div>
+
+</div>

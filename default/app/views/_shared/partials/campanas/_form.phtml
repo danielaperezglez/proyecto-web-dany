@@ -1,0 +1,12 @@
+<?= Form::open() ?>
+
+<div class="mb-3"><label>Nombre:</label><?= Form::text("campanas.nombre", $campana->nombre ?? "") ?></div>
+<div class="mb-3"><label>Descripción:</label><?= Form::textarea("campanas.descripcion", $campana->descripcion ?? "") ?></div>
+<div class="mb-3"><label>Tipo:</label><?= Form::select("campanas.tipo", ["recaudacion" => "Recaudación", "evento" => "Evento", "emergencia" => "Emergencia"], $campana->tipo ?? "recaudacion") ?></div>
+<div class="mb-3"><label>Fecha de inicio:</label><?= Form::date("campanas.fecha_inicio", $campana->fecha_inicio ?? "") ?></div>
+<div class="mb-3"><label>Fecha de fin:</label><?= Form::date("campanas.fecha_fin", $campana->fecha_fin ?? "") ?></div>
+<div class="mb-3"><label>Estado:</label><?= Form::select("campanas.estado", ["activa" => "Activa", "inactiva" => "Inactiva"], $campana->estado ?? "activa") ?></div>
+
+<div class="mb-3"><button type="submit" style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">GUARDAR</button></div>
+
+<?= Form::close() ?>

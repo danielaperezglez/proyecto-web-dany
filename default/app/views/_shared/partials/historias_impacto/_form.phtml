@@ -1,0 +1,12 @@
+<?= Form::openMultipart() ?>
+
+<div class="mb-3"><label>Título:</label><?= Form::text("historia.titulo", $historia->titulo ?? "") ?></div>
+<div class="mb-3"><label>Descripción:</label><?= Form::textarea("historia.descripcion", $historia->descripcion ?? "") ?></div>
+<div class="mb-3"><label>Estado:</label><?= Form::select("historia.estado", ["publicada" => "Publicada", "no publicada" => "No publicada"], $historia->estado ?? "no publicada") ?></div>
+<div class="mb-3"><label>Campaña:</label><?php $campanas_list = [];if (!empty($campanas)) {foreach ($campanas as $c) {$campanas_list[$c->id] = $c->nombre;}} ?><?= Form::select("historia.campana_id", $campanas_list, $historia->campana_id ?? "") ?></div>
+<div class="mb-3"><label>Donador:</label><?php $donadores_list = [];if (!empty($donadores)) {foreach ($donadores as $d) {$donadores_list[$d->id] = $d->nombre;}} ?><?= Form::select("historia.donador_id", $donadores_list, $historia->donador_id ?? "") ?></div>
+<div class="mb-3"><label>Imagen:</label><?= Form::file("historia.imagen") ?><?php if (!empty($historia->imagen)): ?><br><img src="<?= $historia->getImagenUrl() ?>" alt="Imagen" style="max-width:200px;"><?php endif; ?></div>
+
+<div class="mb-3"><button type="submit" style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">GUARDAR</button></div>
+
+<?= Form::close() ?>

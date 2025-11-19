@@ -1,0 +1,48 @@
+<h1>Voluntario: <?= $voluntario->donador->nombre ?? "Sin asignar" ?></h1>
+
+<table class="table table-sm table-hover table-striped">
+    <tbody>
+    <tr><td>Donador</td><td><?= $voluntario->donador->nombre ?? "" ?></td></tr>
+    <tr><td>Centro de Acopio</td><td><?= $voluntario->centro->nombre ?? "" ?></td></tr>
+    <tr><td>Campaña</td><td><?= $voluntario->campana->nombre ?? "" ?></td></tr>
+    <tr><td>Área de Interés</td><td><?= $voluntario->area_interes ?></td></tr>
+    <tr><td>Disponibilidad</td><td><?= $voluntario->disponibilidad ?></td></tr>
+    <tr><td>Horario Preferido</td><td><?= $voluntario->horario_preferido ?></td></tr>
+    <tr><td>Comentarios</td><td><?= $voluntario->comentarios ?></td></tr>
+    <tr><td>Estatus</td><td><?= ucfirst($voluntario->estatus) ?></td></tr>
+    </tbody>
+</table>
+
+<div class="mb-2 text-start">
+    <?= Html::link("voluntariado/editar/{$voluntario->id}", "Editar", ["class"=>"btn btn-info"]) ?>
+    <?= Html::link("voluntariado/index", "Inicio", ["class"=>"btn btn-warning"]) ?>
+</div>
+
+<h2>Relaciones adicionales</h2>
+
+<?php if (!empty($relaciones)): ?>
+    <table class="table table-sm table-hover table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Tipo</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($relaciones as $rel): ?>
+            <tr>
+                <td><?= $rel->id ?></td>
+                <td><?= $rel->tipo ?? "-" ?></td>
+                <td><?= $rel->descripcion ?? "-" ?></td>
+                <td>
+                    <?= $rel->id ? Html::link("/relacion/ver/{$rel->id}", "Ver", ["class"=>"btn btn-primary btn-sm"]) : "-" ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p>Este voluntario no tiene relaciones adicionales registradas.</p>
+<?php endif; ?>

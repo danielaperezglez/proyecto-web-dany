@@ -1,0 +1,97 @@
+<div style="text-align:center;">
+    <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+        CENTRO DE ACOPIO: <?= htmlspecialchars($centro->nombre) ?>
+    </h1>
+    <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+        SAN JUAN DEL RÍO
+    </h2>
+</div>
+
+
+<style>
+    .info-table {
+        width: 100%;
+        max-width: 600px;
+        border-collapse: separate;
+        border-spacing: 0 8px;
+        font-family: Arial, sans-serif;
+    }
+
+    .info-table td {
+        padding: 12px 16px;
+        background-color: #f5f5f5;
+        border-radius: 6px;
+    }
+
+    .info-table tr td:first-child {
+        font-weight: bold;
+        background-color: #e0e0e0;
+        width: 150px;
+    }
+
+    .info-table tr td:last-child {
+        background-color: #f9f9f9;
+    }
+
+    .info-table tr:hover td {
+        background-color: #d3e0d3;
+        transition: background-color 0.3s;
+    }
+</style>
+
+<table class="info-table">
+    <tbody>
+    <tr><td>Dirección</td><td><?= $centro->direccion ?></td></tr>
+    <tr><td>Ciudad</td><td><?= $centro->ciudad ?></td></tr>
+    <tr><td>Estado</td><td><?= $centro->estado ?></td></tr>
+    <tr><td>Necesidades</td><td><?= $centro->necesidades ?></td></tr>
+    <tr><td>Teléfono</td><td><?= $centro->telefono ?></td></tr>
+    <tr><td>Email</td><td><?= $centro->email ?></td></tr>
+    </tbody>
+</table>
+
+
+<!-- Botones alineados a la derecha con verde oliva y tonos cálidos -->
+<div class="mb-2 text-end">
+    <?= Html::link("mapa/editar/{$centro->id}", "Editar", ["class"=>"btn", "style"=>"background-color:#4B2E2E; color:white; border:none; padding:0.5rem 1rem; border-radius:6px;"]) ?>
+    <?= Html::link("mapa/index", "Inicio", ["class"=>"btn", "style"=>"background-color:#C79CA0; color:white; border:none; padding:0.5rem 1rem; border-radius:6px;"]) ?>
+</div>
+
+<!-- RELACIONES -->
+<h2 style="text-align:center; font-size:2rem; font-weight:bold; color:#4B2E2E; margin-top:2rem;">
+    DONACIONES / VOLUNTARIOS RELACIONADOS
+</h2>
+
+<?php if (!empty($relaciones)): ?>
+    <table class="info-table" style="max-width:800px; margin:0 auto;">
+        <thead>
+        <tr>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px; border-radius:6px 6px 0 0;">Folio</th>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px;">Donador</th>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px;">Cantidad</th>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px;">Tipo</th>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px;">Fecha</th>
+            <th style="background-color:#7A9E7E; color:white; padding:12px 16px; border-radius:6px 6px 0 0;">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach($relaciones as $rel): ?>
+            <tr style="background-color:#FAF5EE; transition: background-color 0.3s; border-radius:6px;">
+                <td style="padding:10px; color:#4B2E2E; font-weight:bold;"><?= $rel->id ?></td>
+                <td style="padding:10px; color:#4B2E2E;"><?= $rel->donador ? $rel->donador->nombre : "Sin asignar" ?></td>
+                <td style="padding:10px; color:#4B2E2E;"><?= $rel->cantidad ?></td>
+                <td style="padding:10px; color:#4B2E2E;"><?= $rel->tipo ?></td>
+                <td style="padding:10px; color:#4B2E2E;"><?= $rel->fecha ?></td>
+                <td style="padding:10px; text-align:center;">
+                    <?= $rel->id ? Html::link("/donaciones/ver/{$rel->id}", "Ver", ["class"=>"btn", "style"=>"background-color:#7A9E7E; color:white; border:none; padding:0.3rem 0.6rem; border-radius:4px;"]) : "-" ?>
+                </td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+<?php else: ?>
+    <p style="text-align:center; font-style:italic; color:#5E3C2C; margin-top:1rem;">
+        Este centro de acopio no tiene donaciones o voluntarios registrados.
+    </p>
+<?php endif; ?>
+

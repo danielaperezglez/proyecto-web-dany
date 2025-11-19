@@ -1,0 +1,14 @@
+<?= Form::open() ?>
+
+<div class="mb-3"><label>Nombre:</label><?= Form::text("centro.nombre", $centro->nombre ?? "") ?></div>
+<div class="mb-3"><label>Dirección:</label><?= Form::text("centro.direccion", $centro->direccion ?? "") ?></div>
+<div class="mb-3"><label>Ciudad:</label><?= Form::text("centro.ciudad", $centro->ciudad ?? "") ?></div>
+<div class="mb-3"><label>Estado:</label><?= Form::text("centro.estado", $centro->estado ?? "") ?></div>
+<div class="mb-3"><label>Necesidades:</label><?= Form::textarea("centro.necesidades", $centro->necesidades ?? "") ?></div>
+<div class="mb-3"><label>Teléfono:</label><?= Form::text("centro.telefono", $centro->telefono ?? "") ?></div>
+<div class="mb-3"><label>Email:</label><?= Form::text("centro.email", $centro->email ?? "") ?></div>
+
+<div class="mb-3"><button type="submit" style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">GUARDAR</button></div>
+
+
+<?= Form::close() ?>

@@ -1,0 +1,79 @@
+<div class="container py-4" style="background-color:#F5F0E1; border-radius:12px;">
+
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            IMPACTO SOCIAL
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            SAN JUAN DEL RÍO
+        </h2>
+    </div>
+
+    <p class="text-center text-muted mb-4">Visualiza cómo los donadores están generando cambios positivos con sus aportaciones</p>
+
+    <!-- Tabla de Impacto Social -->
+    <table id="timpacto" class="table table-sm table-hover table-striped">
+        <thead>
+        <tr>
+            <th>Acción</th>
+            <th>ID</th>
+            <th>Donador</th>
+            <th>Tipo de Donación</th>
+            <th>Cantidad Total</th>
+            <th>Descripción</th>
+            <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php foreach ($impactos as $impacto): ?>
+            <tr>
+                <td>
+                    <?= Html::link("/impacto/ver/{$impacto->id}", "Ver", ["class" => "btn btn-success btn-sm"]) ?>
+                    <?= Html::link("/impacto/editar/{$impacto->id}", "Editar", ["class" => "btn btn-warning btn-sm"]) ?>
+                </td>
+                <td><?= $impacto->id ?></td>
+                <td><?= $impacto->donadores->nombre ?? "-" ?></td>
+                <td><?= ucfirst($impacto->tipo_donacion) ?></td>
+                <td><?= $impacto->cantidad_total ?></td>
+                <td><?= $impacto->descripcion ?></td>
+                <td><?= $impacto->fecha_registro ?></td>
+            </tr>
+        <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <!-- Botón Nuevo Impacto -->
+    <div class="d-flex justify-content-end mt-4">
+        <?= Html::link("/impacto_social/registrar", "REGISTRAR NUEVO IMPACTO", ["class"=>"btn btn-danger"]) ?>
+    </div>
+
+<script>
+    // Inicialización de Tabulator para tabla interactiva
+    var table = new Tabulator("#timpacto", {
+        layout:"fitColumns",
+        pagination:"local",
+        paginationSize:10,
+        movableColumns:true,
+        columns:[
+            {title:"Acción", field:"Acción", formatter:"html", widthGrow:1},
+            {title:"ID", field:"ID", sorter:"number", widthGrow:1},
+            {title:"Donador", field:"Donador", sorter:"string", headerFilter:"input", widthGrow:1},
+            {title:"Tipo de Donación", field:"Tipo de Donación", sorter:"string", headerFilter:"input", widthGrow:1},
+            {title:"Cantidad Total", field:"Cantidad Total", sorter:"number", widthGrow:1},
+            {title:"Descripción", field:"Descripción", sorter:"string", headerFilter:"input", widthGrow:2},
+            {title:"Fecha", field:"Fecha", sorter:"date", widthGrow:1},
+        ],
+    });
+
+    // Convertir la tabla HTML a datos de Tabulator
+    var data = [];
+    document.querySelectorAll("#timpacto tbody tr").forEach(function(row){
+        var rowData = {};
+        row.querySelectorAll("td").forEach(function(cell, index){
+            var field = table.getColumnDefinitions()[index].field;
+            rowData[field] = cell.innerHTML;
+        });
+        data.push(rowData);
+    });
+    table.setData(data);
+</script>

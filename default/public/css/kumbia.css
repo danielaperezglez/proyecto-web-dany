@@ -1,0 +1,164 @@
+/* ============================
+   1. Reset de elementos-Normaliza comportamiento de HTML5 y otros elementos
+============================ */
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+    display: block;
+}
+audio, canvas, video { display: inline-block; }
+audio:not([controls]) { display: none; height: 0; }
+[hidden] { display: none; }
+
+/* ============================
+   2. Tipografía y enlaces- mark: resaltado de texto
+============================ */
+html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+a:focus { outline: thin dotted; }
+a:active, a:hover { outline: 0; }
+mark { background: #ff0; color: #000; } /* Cambia aquí el color de resaltado */
+code, kbd, pre, samp { font-family: monospace, serif; font-size: 1em; }
+
+/* ============================
+   3. Estilo general de la página- body: color de fondo y texto
+============================ */
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333; /* Color de texto general */
+    background-color: #fcf8f3; /* Color de fondo de la página */
+    margin: 0;
+}
+
+/* ============================
+   4. Imágenes
+============================ */
+img { border: 0; vertical-align: middle; }
+.img-rounded { border-radius: 9px; } /* Bordes redondeados */
+.img-circle { border-radius: 50%; } /* Imagen circular */
+
+/* ============================
+   5. Encabezados (h1-h6)
+============================ */
+h1, h2, h3, h4, h5, h6 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 22px;
+    margin-bottom: 11px;
+    /* color: #333; <- Puedes definir color de títulos aquí */
+}
+h1 { font-size: 42px; }
+h2 { font-size: 36px; }
+h3 { font-size: 29px; }
+h4 { font-size: 22px; }
+h5 { font-size: 19px; }
+h6 { font-size: 16px; }
+
+/* ============================
+   6. Formularios- Inputs, selects y textareas
+============================ */
+input.control, select.control, textarea.control {
+    display: block;
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+    line-height: 1.5;
+    color: #555; /* Color del texto dentro del input */
+    background-color: #fff; /* Color de fondo del input */
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: all ease-in .4s;
+}
+input.control:focus, select.control:focus, textarea.control:focus {
+    border-color: #66afe9;
+    outline: 0;
+}
+
+/* ============================
+   7. Botones- Diferentes estilos (primary, danger, info, etc.)
+============================ */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #fff; /* Color del texto del botón */
+    border-radius: 6px;
+    border-width: 1px;
+    line-height: 1.5;
+    padding: 6px 12px;
+    box-shadow: 1px 1px 3px #555;
+}
+.btn-primary {
+    border-color: #245682;
+    background-image: linear-gradient(45deg, #428bca, #3071a9); /* Fondo del botón */
+}
+.btn-danger {
+    border-color: #a02622;
+    background-image: linear-gradient(45deg, #d9534f, #c9302c);
+}
+.btn-info {
+    border-color: #2390b0;
+    background-image: linear-gradient(45deg, #5bc0de, #31b0d5);
+}
+.btn-success {
+    border-color: #357935;
+    background-image: linear-gradient(45deg, #5cb85c, #449d44);
+}
+.btn-warning {
+    border-color: #c77c11;
+    background-image: linear-gradient(45deg, #f0ad4e, #ec971f);
+}
+
+/* ============================
+   8. Hero / banners
+============================ */
+.hero {
+    padding: 30px;
+    margin-bottom: 30px;
+    font-size: 22.5px;
+    font-weight: 200;
+    line-height: 2.25;
+    color: #fff; /* Texto dentro del hero */
+    background-color: #0ac; /* Fondo del hero */
+    border-radius: 6px;
+}
+
+/* ============================
+   9. Flash messages (KumbiaPHP)
+============================ */
+.flash { margin: 5px 0; min-height: 32px; padding:3px 10px 3px 50px; line-height: 32px; border-radius: 2px; }
+.error { color: #D8000C; background-color: #FFBABA; }
+.info { color: #00529B; background-color: #BDE5F8; }
+.valid { color: #4F8A10; background-color: #DFF2BF; }
+.warning { color: #9F6000; background-color: #FEEFB3; }
+
+/* ============================
+   10. Paginador
+============================ */
+.paginator a {
+    border: 1px solid #e8ebf1;
+    padding: .5em;
+    text-decoration: none;
+    margin: .5em .1em;
+    background: #FFF; /* Fondo enlaces */
+}
+.paginator a:hover { background: #e8ebf1; }
+.paginator strong {
+    background: #e8ebf1;
+    border: 1px solid #e8ebf1;
+    padding: .5em;
+    margin: .5em .1em;
+}
+
+/* ============================
+   11. Footer
+============================ */
+footer {
+    padding-top: 1em;
+    margin-top: 2em;
+    border-top: 1px solid #ccc;
+    /* background-color: #f1f1f1; <- Puedes agregar color de fondo */
+}

@@ -1,0 +1,9 @@
+<div style="text-align:center;">
+    <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; color:#4B2E2E;">
+        REGISTRAR HISTORIA DE IMPACTO
+    </h1>
+</div>
+
+<div style="color:red;"><?php View::content(); ?></div>
+
+<?= View::partial('historias_impacto/_form', false, ['historia'   => $historia ?? null, 'campanas'   => $campanas ?? [], 'donadores'  => $donadores ?? [], 'errors'     => $errors ?? []]) ?>

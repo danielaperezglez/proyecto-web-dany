@@ -1,0 +1,12 @@
+<?= Form::open() ?>
+
+<div class="mb-3"><label>Nombre:</label><?= Form::text("donador[nombre]", $donador->nombre ?? "") ?></div>
+<div class="mb-3"><label>Teléfono:</label><?= Form::text("donador[telefono]", $donador->telefono ?? "") ?></div>
+<div class="mb-3"><label>Email:</label><?= Form::text("donador[email]", $donador->email ?? "") ?></div>
+<div class="mb-3"><label>Dirección:</label><?= Form::text("donador[direccion]", $donador->direccion ?? "") ?></div>
+<div class="mb-3"><label>Tipo:</label><?= Form::select("donador[tipo]", ["individual" => "Individual", "empresa" => "Empresa"], $donador->tipo ?? "") ?></div>
+<div class="mb-3"><label>Frecuencia de donación:</label><?= Form::text("donador[frecuencia_donacion]", $donador->frecuencia_donacion ?? "") ?></div>
+
+<div class="mb-3"><button type="submit" style="background-color: #7A9E7E; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;"GUARDAR</button></div>
+
+<?= Form::close() ?>

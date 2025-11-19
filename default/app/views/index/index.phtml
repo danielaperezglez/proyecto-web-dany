@@ -1,0 +1,235 @@
+<!-- app/views/index.phtml -->
+<link href="/kumbiaphp/libs/bootstrap/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/proyecto/default/public/css/custom.css?v=1.0"> <!-- Tu CSS -->
+
+<!-- HERO / ENCABEZADO -->
+<div class="d-flex align-items-center justify-content-center mb-5" style="gap:30px; flex-wrap:wrap;">
+    <div>
+        <img src="/proyecto/default/public/storage/logo.png" alt="Logo Centro de Acopio" style="width:10rem; height:10rem;">
+    </div>
+    <div style="text-align:center;">
+        <h1 style="font-size:3rem; font-weight:bold; text-transform:uppercase; line-height:1.1; margin:0; color:#4B2E2E;">
+            CENTRO DE ACOPIO PARA PERROS
+        </h1>
+        <h2 style="font-size:2rem; font-weight:bold; margin:0; color:#D8A5AB;">
+            SAN JUAN DEL RÍO
+        </h2>
+    </div>
+</div>
+
+<!-- IMAGEN Y TEXTO DE CHIQUIS -->
+<div class="d-flex flex-column flex-md-row align-items-center justify-content-center" style="max-width:900px; margin:40px auto; gap:30px; background-color:#f9f4ef; padding:20px; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+
+    <!-- Imagen -->
+    <div style="flex:1; max-width:250px;">
+        <img src="/proyecto/default/public/storage/chiquis.jpg" alt="Mi Chiquis" style="width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.25);">
+    </div>
+
+    <!-- Texto -->
+    <div class="text-start" style="flex:1; color:#C79CA0; font-size:1.1rem; line-height:1.6;">
+        <p><strong>Esta página es por ella...</strong></p>
+        <p>
+            Hace un mes que <strong>mi Chiquis</strong> falleció, dejando un vacío en mi corazón.
+            Cada recuerdo sigue vivo y su amor continúa iluminando mi vida.
+            En su honor, decidí crear esta página para ayudar a otros perritos que lo necesiten,
+            manteniendo viva su alegría y su cariño.
+        </p>
+        <p><strong>Mi Chiquis, siempre te llevaré en mi corazón. TE AMO.</strong></p>
+    </div>
+
+</div>
+
+<!-- ESTADÍSTICAS ANIMADAS -->
+<section class="container text-center my-5">
+    <div class="row g-4">
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="15">0</h2>
+                <p>Centros activos</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="230">0</h2>
+                <p>Donaciones registradas</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="45">0</h2>
+                <p>Voluntarios activos</p>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="stat-card">
+                <h2 class="stat-number" data-target="5">0</h2>
+                <p>Campañas en curso</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MAPA DE CENTROS -->
+<section class="container mb-5 text-center">
+    <h2 class="mb-4" style="color:#5A3E36;">MAPA DE CENTROS DE ACOPIO EN SAN JUAN DEL RÍO</h2>
+    <div class="map-container" style="max-width:800px; margin:0 auto;">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d59833.100245451285!2d-99.9974155241802!3d20.400662770434067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCENTROS%20DE%20ACOPIO%20PARA%20PERROS%20EN%20SAN%20JUAN%20DEL%20RIO!5e0!3m2!1ses!2smx!4v1761527788251!5m2!1ses!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <div class="mt-3"><a href="/mapa" class="btn btn-main btn-lg">Ver todos los centros</a></div>
+</section>
+
+<!-- CAMPAÑAS ACTIVAS -->
+<section class="container mb-5">
+    <h2 class="text-center mb-4" style="color:#D8A5AB;">CAMPAÑAS ACTIVAS</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="d-flex align-items-center p-2 shadow-sm rounded campaign-card">
+                <img src="/proyecto/default/public/storage/campañas/campana1.jpg" alt="Campaña de Invierno" class="img-fluid rounded" style="max-width:150px;">
+                <div class="ms-2 text-center flex-grow-1">
+                    <h5>Campaña de Alimento para Perritos</h5>
+                    <p>Recaudación de alimentos y artículos para refugios de perros en situación vulnerable.</p>
+                    <a href="/campana" class="btn btn-main">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex align-items-center p-2 shadow-sm rounded campaign-card">
+                <img src="/proyecto/default/public/storage/campañas/campana2.jpg" alt="Campaña de Invierno" class="img-fluid rounded" style="max-width:150px;">
+                <div class="ms-2 text-center flex-grow-1">
+                    <h5>Campaña de Invierno</h5>
+                    <p>Recogida de cobijas y alimento para perros callejeros.</p>
+                    <a href="/campana" class="btn btn-main">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex align-items-center p-2 shadow-sm rounded campaign-card">
+                <img src="/proyecto/default/public/storage/campañas/campana3.jpg" alt="Campaña de Invierno" class="img-fluid rounded" style="max-width:150px;">
+                <div class="ms-2 text-center flex-grow-1">
+                    <h5>Vacunación Canina</h5>
+                    <p>Jornada gratuita de vacunación y desparasitación.</p>
+                    <a href="/campana" class="btn btn-main">Ver más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="d-flex align-items-center p-2 shadow-sm rounded campaign-card">
+                <img src="/proyecto/default/public/storage/campañas/campana4.jpg" alt="Vacunación Canina" class="img-fluid rounded" style="max-width:150px;">
+                <div class="ms-2 text-center flex-grow-1">
+                    <h5>Campaña de Esterilización Canina</h5>
+                    <p>Control responsable de la población animal. Servicio gratuito o con cuota simbólica. ¡Agenda tu cita y evita el abandono!</p>
+                    <a href="/campana" class="btn btn-main">Ver más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- HISTORIAS DE IMPACTO -->
+<section class="container mb-5">
+    <h2 class="text-center mb-4" style="color:#C79CA0;">HISTORIAS DE IMPACTO</h2>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <div class="row align-items-center story-card" style="background-color:#F5F0E1;">
+                <div class="col-4 p-0" style="max-width:150px;">
+                    <img src="/proyecto/default/public/storage/historias_impacto/historia1.jpg" alt="Luna encontró un hogar" style="width:100%; height:auto;">
+                </div>
+                <div class="col-8 p-4 d-flex flex-column justify-content-center">
+                    <h5>Luna encontró un hogar</h5>
+                    <p>Con la ayuda de voluntarios y donaciones, Luna fue adoptada y ahora vive feliz con su nueva familia.</p>
+                    <a href="/historias_impacto" class="btn btn-main align-self-start">Leer más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row align-items-center story-card" style="background-color:#EAD9B7;">
+                <div class="col-4 p-0" style="max-width:150px;">
+                    <img src="/proyecto/default/public/storage/historias_impacto/historia2.jpg" alt="Rescate en la colonia Centro" style="width:100%; height:auto;">
+                </div>
+                <div class="col-8 p-4 d-flex flex-column justify-content-center">
+                    <h5>Rescate en la colonia Centro</h5>
+                    <p>Un grupo de voluntarios rescató a 5 perros abandonados y les dio atención médica y refugio temporal.</p>
+                    <a href="/historias_impacto" class="btn btn-main align-self-start">Leer más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row align-items-center story-card" style="background-color:#C79CA0;">
+                <div class="col-4 p-0" style="max-width:150px;">
+                    <img src="/proyecto/default/public/storage/historias_impacto/historia3.jpg" alt="Max supera el abandono" style="width:100%; height:auto;">
+                </div>
+                <div class="col-8 p-4 d-flex flex-column justify-content-center">
+                    <h5>Max supera el abandono</h5>
+                    <p>Max, un perro callejero herido, recibió tratamiento y encontró una familia que lo ama.</p>
+                    <a href="/historias_impacto" class="btn btn-main align-self-start">Leer más</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row align-items-center story-card" style="background-color:#9CA88B;">
+                <div class="col-4 p-0" style="max-width:150px;">
+                    <img src="/proyecto/default/public/storage/historias_impacto/historia4.jpg" alt="Rescate en la zona norte" style="width:100%; height:auto;">
+                </div>
+                <div class="col-8 p-4 d-flex flex-column justify-content-center">
+                    <h5>Rescate en la zona norte</h5>
+                    <p>Gracias a donaciones, 3 perros enfermos recibieron atención veterinaria y fueron rehabilitados.</p>
+                    <a href="/historias_impacto" class="btn btn-main align-self-start">Leer más</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN PARTICIPA -->
+<section class="text-center my-5">
+    <h2 class="mb-4" style="color:#5A3E36;">¡PARTICIPA Y MARCA LA DIFERENCIA!</h2>
+
+    <!-- Lleva al formulario de nueva donación -->
+    <a href="<?= PUBLIC_PATH ?>donaciones/nuevo" class="btn btn-main btn-lg me-2">Quiero donar</a>
+
+    <!-- Lleva al formulario de registro de voluntario -->
+    <a href="<?= PUBLIC_PATH ?>donadores/nuevo" class="btn btn-main btn-lg">Ser voluntario</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-4 mt-5" style="background-color:#4B2E2E; color:#F5F0E1; text-align:center;">
+    <p>Síguenos en redes:
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </p>
+    <p>📧 contacto@acopiosjr.com | 📍 San Juan del Río, Querétaro</p>
+</footer>
+
+<!-- ESTILOS -->
+<style>
+    body { background-color:#F5F0E1; color:#5A3E36; }
+    h1,h2,h3,h4,h5 { color:#4B2E2E; }
+    .btn-main { background-color:#9CA88B !important; color:#FDF6EC !important; border:none; text-decoration:none; transition:.3s; }
+    .btn-main:hover { background-color:#B0C19A !important; color:#FDF6EC !important; transform:scale(1.05);}
+    .stat-card { background-color:#FDF6EC; color:#5A3E36; border-radius:12px; padding:30px 20px; box-shadow:0 4px 8px rgba(0,0,0,0.1); transition: transform .3s; }
+    .stat-card:hover { transform: translateY(-5px); }
+    .campaign-card, .story-card { border-radius:12px; overflow:hidden; color:#5A3E36; transition: transform .3s, box-shadow .3s; }
+    .campaign-card:hover, .story-card:hover { transform:translateY(-5px); box-shadow:0 8px 16px rgba(0,0,0,0.2); }
+    footer a { color:#FDF6EC; margin:0 5px; }
+    .map-container { border-radius:12px; overflow:hidden; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+    img { border-radius:12px; }
+</style>
+
+<!-- SCRIPT DE ANIMACIÓN DE NÚMEROS -->
+<script>
+    const counters = document.querySelectorAll('.stat-number');
+    counters.forEach(counter => {
+        counter.innerText = '0';
+        const updateCount = () => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / 100;
+            if(count < target) { counter.innerText = Math.ceil(count + increment); setTimeout(updateCount,15); }
+            else { counter.innerText = target; }
+        };
+        updateCount();
+    });
+</script>
+

@@ -1,0 +1,117 @@
+/* =======================================
+   FONDO GENERAL DE LA PÁGINA
+   ======================================= */
+
+/* Fondo de toda la página */
+body {
+    background-color: #FAF5EE !important; /* Crema sólido (Fila 2) */
+}
+
+/* Fondo del contenido principal */
+.content-wrapper {
+    background-color: #FAF5EE !important; /* Beige sólido (Fila 3) */
+}
+
+/* =======================================
+   PERSONALIZACIÓN DEL SIDEBAR
+   ======================================= */
+
+/* Contenedor completo del sidebar */
+.sidebar.sidebar-dark-primary,
+.main-sidebar {
+    background-color: #4B2E2E !important; /* Marrón chocolate sólido (Fila 1) */
+    color: #F5F0E1 !important;            /* Crema para texto */
+}
+
+/* Panel del usuario dentro del sidebar */
+.sidebar.sidebar-dark-primary .user-panel,
+.sidebar.sidebar-dark-primary .user-panel .info a {
+    background-color: #4B2E2E !important; /* Marrón chocolate sólido */
+    color: #C79CA0 !important;            /* Rosa viejo (Fila 4) */
+}
+
+/* Formulario de búsqueda dentro del sidebar */
+.sidebar.sidebar-dark-primary .form-control-sidebar {
+    background-color: #5A3E36 !important; /* Marrón satinada (Fila 1 satin) */
+    color: #ffffff !important;
+    border: none !important;
+}
+
+.sidebar.sidebar-dark-primary .btn-sidebar {
+    background-color: #E8BEBE !important; /* Rosa viejo satinada (Fila 4 satin) */
+    color: #ffffff !important;
+}
+
+.sidebar.sidebar-dark-primary .btn-sidebar i {
+    color: #ffffff !important;
+}
+
+/* Sidebar Menu (ul nav) */
+.sidebar.sidebar-dark-primary .nav-sidebar {
+    background-color: #4B2E2E !important; /* Fondo igual al sidebar */
+}
+
+/* Color de los enlaces normales del menú lateral */
+.sidebar.sidebar-dark-primary .nav-link {
+    background-color: #F5F0E1 !important; /* Crema sólido (Fila 2) */
+    color: #4B2E2E !important;           /* Marrón chocolate para texto */
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: all 0.3s;
+}
+
+/* Color del enlace activo */
+.sidebar.sidebar-dark-primary .nav-link.active {
+    background-color: #9CA88B !important; /* Verde salvia sólido (Fila 5) */
+    color: #ffffff !important;
+    font-weight: bold;
+}
+
+/* Color del enlace al pasar el mouse */
+.sidebar.sidebar-dark-primary .nav-link:hover {
+    background-color: #B0C19A !important; /* Verde salvia satinada (Fila 5 satin) */
+    color: #ffffff !important;
+}
+
+/* Color de los iconos en la barra lateral */
+.sidebar.sidebar-dark-primary .nav-icon {
+    color: #4B2E2E !important; /* Marrón chocolate */
+}
+
+/* =======================================
+   PERSONALIZACIÓN DEL NAVBAR
+   ======================================= */
+
+.navbar-white {
+    background-color: #4B2E2E !important; /* Marrón chocolate sólido */
+    color: #F5F0E1 !important;
+}
+
+.navbar-white .navbar-nav .nav-link {
+    color: #F5F0E1 !important;
+}
+
+.navbar-white .navbar-nav .nav-link:hover {
+    color: #C79CA0 !important; /* Rosa viejo */
+}
+
+/* =======================================
+   PERSONALIZACIÓN DEL FOOTER
+   ======================================= */
+
+.main-footer {
+    background-color: #4B2E2E !important; /* Marrón chocolate sólido */
+    color: #F5F0E1 !important;
+    border-top: 1px solid #C79CA0;        /* Línea rosa viejo */
+}
+
+/* =======================================
+   TÍTULOS Y NAV-HEADER
+   ======================================= */
+
+.nav-header {
+    color: #C79CA0 !important; /* Rosa viejo */
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
+}
