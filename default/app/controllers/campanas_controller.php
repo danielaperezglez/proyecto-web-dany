@@ -62,7 +62,7 @@ class CampanasController extends AppController {
         }
 
         if ($campana->delete()) {
-            Flash::valid("CAMPAÑA ELIMINADA CORRECTAMENTE!");
+            Flash::valid("CAMPAÑA ELIMINADA CORRECTAMENTE");
         } else {
             Flash::error("NO SE PUDO ELIMINAR LA CAMPAÑA");
         }
